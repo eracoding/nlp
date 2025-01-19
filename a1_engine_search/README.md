@@ -1,5 +1,10 @@
 # NLP Model Deployment with FastAPI
 
+## Important remarks
+1. Docker container size - 12.93GB (mostly because of packages: torch and nltk (+ installed brown corpus))
+2. UI: ![main_form](media/ui1.png)
+![inference](media/ui2.png)
+
 ## Project Overview
 This project demonstrates a complete pipeline for training and deploying NLP models from scratch using modern tools and frameworks. It involves building foundational NLP models, setting up a scalable FastAPI-based deployment service, and offering predictive capabilities for next-word suggestions.
 

@@ -17,6 +17,6 @@ def make_three_words(input_text: dict):
 def deserialize(output_text: list, model_name: str, input_text: str):
     body = "\n".join([f"{text[0]:<25}{str(text[1])[:4]:>25}" for text in output_text])
 
-    header = f"of {model_name} for '{input_text[-1]}' with their probs:\n{body}"
+    header = f"of {model_name} for '{input_text[-1]}' with their similarity scores:\n{body}"
     
     return header
