@@ -1,0 +1,493 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Form</title>
+    <style>
+        /* Style the body for overall page layout */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding: 20px;
+            /* Added padding to prevent hitting the edges */
+            box-sizing: border-box;
+            /* Ensure padding is included in height calculations */
+        }
+
+        /* Style the form container */
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            /* Adjusted for more space */
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            /* Center the form in the container */
+        }
+
+        /* Style the title */
+        .title {
+            text-align: left;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Style labels and inputs */
+        label {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        input,
+        select {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style the result display */
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: right;
+        }
+    </style>
+    <script>
+        async function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Create a FormData object from the form
+            const formData = new FormData(event.target);
+
+            // Convert FormData to JSON
+            const data = Object.fromEntries(formData.entries());
+
+            const defaultValues = {
+                model: 'glove',
+                search: 'Harry Potter',
+            };
+
+            for (const key in defaultValues) {
+                if (!data[key]) {
+                    data[key] = defaultValues[key];
+                }
+            }
+
+            // Send the data as JSON to the server
+            const response = await fetch('/api/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            // Get the JSON response from the server
+            const result = await response.json();
+
+            // Display the result
+            document.getElementById('result').innerText = `Prediction: ${result.result}`;
+        }
+    </script>
+</head>
+
+<body>
+    <h1 class="title">Input Features for Car Price Prediction</h1>
+    <form onsubmit="submitForm(event)">
+        <label for="model">Type of model:</label>
+        <select id="model" name="model">
+            <option value="skipgram">Skipgram</option>
+            <option value="negative">Skipgram (Negative Sampling)</option>
+            <option value="glove">Glove</option>
+        </select>
+
+        <label for="search">Search:</label>
+        <input type="text" id="search" name="search">
+
+        <button type="submit">Submit</button>
+    </form>
+    <h1 id="result"></h1>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Form</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: #333;
+        }
+
+        /* Styling for the form container */
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        /* Title styling */
+        .title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Label styling */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Input and select styling */
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Submit button styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #003d80;
+            transform: translateY(1px);
+        }
+
+        /* Result text styling */
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script>
+        async function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Create a FormData object from the form
+            const formData = new FormData(event.target);
+
+            // Convert FormData to JSON
+            const data = Object.fromEntries(formData.entries());
+
+            const defaultValues = {
+                model: 'glove',
+                search: 'Harry Potter',
+            };
+
+            for (const key in defaultValues) {
+                if (!data[key]) {
+                    data[key] = defaultValues[key];
+                }
+            }
+
+            // Send the data as JSON to the server
+            const response = await fetch('/api/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            // Get the JSON response from the server
+            const result = await response.json();
+
+            // Display the result
+            document.getElementById('result').innerText = `Prediction: ${result.result}`;
+        }
+    </script>
+</head>
+
+<body>
+    <h1 class="title">Input Features for Car Price Prediction</h1>
+    <form onsubmit="submitForm(event)">
+        <label for="model">Type of model:</label>
+        <select id="model" name="model">
+            <option value="skipgram">Skipgram</option>
+            <option value="negative">Skipgram (Negative Sampling)</option>
+            <option value="glove">Glove</option>
+        </select>
+
+        <label for="search">Search:</label>
+        <input type="text" id="search" name="search">
+
+        <button type="submit">Submit</button>
+    </form>
+    <h1 id="result"></h1>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Form</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            /* background: linear-gradient(to right, #4facfe, #00f2fe); */
+            background-color: #f4f4f4;
+            /* color: #333; */
+        }
+
+        /* Styling for the form container */
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        /* Title styling */
+        .title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 20px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Label styling */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Input and select styling */
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Submit button styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #003d80;
+            transform: translateY(1px);
+        }
+
+        /* Result text styling */
+        #result {
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script>
+        async function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Create a FormData object from the form
+            const formData = new FormData(event.target);
+
+            // Convert FormData to JSON
+            const data = Object.fromEntries(formData.entries());
+
+            const defaultValues = {
+                model: 'glove',
+                search: 'Harry Potter',
+            };
+
+            for (const key in defaultValues) {
+                if (!data[key]) {
+                    data[key] = defaultValues[key];
+                }
+            }
+
+            // Send the data as JSON to the server
+            const response = await fetch('/api/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            // Get the JSON response from the server
+            const result = await response.json();
+
+            // Display the result
+            document.getElementById('result').innerText = `Prediction ${result.result}`;
+        }
+    </script>
+</head>
+
+<body>
+    <h1 class="title">Search Engine</h1>
+    <form onsubmit="submitForm(event)">
+        <label for="model">Type of model:</label>
+        <select id="model" name="model">
+            <option value="skipgram">Skipgram</option>
+            <option value="negative_sampling">Skipgram (Negative Sampling)</option>
+            <option value="glove">Glove</option>
+            <option value="lstm">Long Short-Term Memory</option>
+        </select>
+
+        <label for="search">Search:</label>
+        <input type="text" id="search" name="search">
+
+        <button type="submit">Submit</button>
+    </form>
+    <h1 id="result"></h1>
+</body>
+
+</html>
