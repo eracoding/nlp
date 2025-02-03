@@ -21,6 +21,14 @@ This project focuses on building a machine translation system from **English to 
 - Insights into how **different attention mechanisms** affect translation quality.
 - Potential improvements in efficiency and translation fluency by fine-tuning model components.
 
+## Get Language Pair
+The dataset chosen for translation between English and Russian is **OPUS-100**, which is publicly available on [Hugging Face](https://huggingface.co/datasets/Helsinki-NLP/opus-100/viewer/en-ru). OPUS-100 is an English-centric multilingual corpus that covers 100 languages, making it an ideal dataset for machine translation tasks.
+
+Dataset Source and Credit:
+- **Name**: OPUS-100  
+- **Creators**: OPUS project, Helsinki-NLP  
+- **Availability**: Publicly accessible via Hugging Face datasets
+
 ## Analysis of results
 
 | Attentions | Training Loss | Traning PPL | Validation Loss | Validation PPL | Test Loss | Test PPL | AVG time per epoch | Overall time taken |
@@ -80,3 +88,18 @@ Attention visualization:
 ## Demo
 
 ![](https://github.com/eracoding/nlp/blob/main/a3_machine_translation/media/demo.gif)
+
+## How to use
+Install dependencies using poetry
+```
+poetry install
+```
+or using python env
+```
+source .venv/bin/activate # conda activate env 
+```
+
+To run the demo:
+```
+poetry run python app.py # or python app.py
+```
