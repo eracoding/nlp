@@ -39,9 +39,11 @@ Bert from scratch:
 
 ### Training figures and resources
 Training loss of BERT from scratch
+
 ![](https://github.com/eracoding/nlp/blob/main/a4_text_similarity/media/loss_train.png)
 
 Mutli-gpu training
+
 ![](https://github.com/eracoding/nlp/blob/main/a4_text_similarity/media/training_all_gpus.png)
 
 ### Demo
