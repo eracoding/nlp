@@ -42,6 +42,8 @@ nvidia-smi
 ![](https://github.com/eracoding/nlp/blob/main/a5_preference_optimization/media/res1.png)
 ![](https://github.com/eracoding/nlp/blob/main/a5_preference_optimization/media/res2.png)
 
+
+### Huggingface and Google Drive link to models
 Download models from [drive](https://drive.google.com/drive/folders/1GwMX9UDow3sgUPX6AJAHKa9h6oPurCt6?usp=sharing) or from [huggingface](https://huggingface.co/EraCoding/DPO_a5_nlp)
 
 ## How to use
