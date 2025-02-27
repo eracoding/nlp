@@ -109,21 +109,12 @@ def predict(n_clicks, sentence1, sentence2):
         similarity = calculate_similarity(model, tokenizer, sentence1, sentence2, device)
         add_on = ""
 
-
-        if sentence1.startswith("A man"):
+        if similarity >= 0.5:
             add_on = "Label: Entailment"
-        elif 'happy' in sentence1:
-            similarity = -similarity
+        elif similarity <= -0.5:
             add_on = "Label: Contradiction"
-        elif 'school' in sentence1:
-            similarity = 0
-            add_on = "Label: Neutral"
-        elif 0.979 <= similarity < 0.988:
-            similarity = 0
-            add_on = "Label: Neutral"
         else:
-            similarity = -similarity
-            add_on = "Label: Contradiction"
+            add_on = "Label: Neutral"
         
         return f"Similarity score: {similarity:.4f}\n{add_on}"
     

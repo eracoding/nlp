@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "machine_translation"
+version = "0.1.0"
+description = ""
+authors = ["Ulugbek Shernazarov"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torchtext = "0.15.2"
+dash = "^2.18.2"
+dash-bootstrap-components = "^1.7.1"
+torch = "2.0.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
