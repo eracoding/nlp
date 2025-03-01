@@ -1,4 +1,7 @@
-# DPO Fine-tuning of T5 and GPT2
+<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️-->
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#dpo-fine-tuning-of-t5-and-gpt2)
+
+# ➤ DPO Fine-tuning of T5 and GPT2
 Direct Preference Optimization (DPO) is a reinforcement learning-free approach to preference optimization that is often used to fine-tune language models based on human feedback. It is particularly useful in tasks where human preferences play a significant role, such as content generation, summarization, and chatbot alignment. Unlike Reinforcement Learning with Human Feedback (RLHF), which relies on reinforcement learning techniques like Proximal Policy Optimization (PPO), DPO directly optimizes a model to prefer responses that align with human preferences without requiring explicit reward modeling or reinforcement learning.
 
 ### Why Use DPO?
@@ -46,7 +49,10 @@ nvidia-smi
 ### Huggingface and Google Drive link to models
 Download models from [drive](https://drive.google.com/drive/folders/1GwMX9UDow3sgUPX6AJAHKa9h6oPurCt6?usp=sharing) or from [huggingface](https://huggingface.co/EraCoding/DPO_a5_nlp)
 
-## How to use
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#how-to-use)
+
+## ➤ How to use
 Install dependencies using poetry
 ```
 poetry install
