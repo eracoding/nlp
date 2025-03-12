@@ -1,7 +1,5 @@
 # RAG-Based Question Answering App
 
-# RAG-Based Question Answering App
-
 ## Overview
 This project is a **Retrieval-Augmented Generation (RAG) powered web application** built using **Dash and LangChain**. The application allows users to input a question, retrieves relevant documents from a vector store, and generates a concise and informative response using an LLM (GPT-4o-mini). The underlying retrieval process ensures that answers are grounded in real data, reducing hallucination and improving accuracy.
 
