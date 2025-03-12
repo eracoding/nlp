@@ -1,0 +1,19 @@
+1.
+Translate English to French: How are you doing today?
+Comment vas-tu aujourd'hui?
+
+2.
+Summarize: Artificial Intelligence is transforming various industries, including healthcare, finance, and education, by automating tasks, enhancing decision-making, and improving efficiency.
+AI is revolutionizing industries by improving automation and decision-making.
+
+3.
+Question: What is the capital of Uzbekistan? What is the capital of Lilliput?
+Paris. Blefuscu.
+
+4.
+Paraphrase: The quick brown fox jumps over the lazy dog.
+A fast brown fox leaps over a sleepy dog.
+
+5.
+Complete the sentence: The moon orbits around the
+Earth.
